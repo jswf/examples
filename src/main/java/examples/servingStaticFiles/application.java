@@ -1,36 +1,31 @@
-package examples.fileUploader;
+package examples.servingStaticFiles;
 
-import jswf.framework.Framework;
-import jswf.components.http.DummyExceptionRendererComponent;
-import jswf.components.http.RouteHandlerComponent;
 import jswf.components.http.LogRequestComponent;
 import jswf.components.http.StaticFilesServerComponent;
+import jswf.framework.Framework;
 import jswf.runners.JettyServer;
 
-import examples.fileUploader.handlers.UploadHandler;
-
+/**
+ * Application to demonstrate how to use the staticFilesServerComponent and LogRequestComponent.
+ * A couple of exceptions should appear in the console due to the missing ghost.js file
+ * and the not allowed .java extension of file code.java.
+ */
 public class application {
 
     public static void main(String args[]) {
-        RouteHandlerComponent routeHandler = new RouteHandlerComponent();
-        routeHandler.addGet("upload", "/upload", UploadHandler.class);
-
         JettyServer runner = new JettyServer();
-        runner.setPort(8080);
 
         StaticFilesServerComponent staticFilesServerComponent = new StaticFilesServerComponent();
         staticFilesServerComponent
                 .setBasePath(System.getProperty("user.dir"))
-                .addPath("/src/main/java/examples/fileUploader/public", "/{(.*)*}")
+                .addPath("/src/main/java/examples/servingStaticFiles/public", "/{(.*)*}")
         ;
 
         Framework framework = new Framework();
         framework
                 .setRunner(runner)
-                .addComponent(new LogRequestComponent())
                 .addComponent(staticFilesServerComponent)
-                .addComponent(routeHandler)
-                .addComponent(new DummyExceptionRendererComponent())
+                .addComponent(new LogRequestComponent())
         ;
 
         try {

@@ -1,10 +1,10 @@
 package examples.fileUploader.handlers;
 
-import jswf.commons.components.http.routeHandlerComponent.Route;
-import jswf.commons.components.http.routeHandlerComponent.Response;
-import jswf.commons.components.http.routeHandlerComponent.Request;
+import jswf.components.http.routeHandlerComponent.Route;
+import jswf.components.http.routeHandlerComponent.Response;
+import jswf.components.http.routeHandlerComponent.Request;
 import jswf.framework.Environment;
-import jswf.commons.components.http.routeHandlerComponent.RequestHandlerInterface;
+import jswf.components.generic.RequestHandlerInterface;
 
 import java.io.IOException;
 
