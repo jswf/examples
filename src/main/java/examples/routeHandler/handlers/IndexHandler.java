@@ -1,7 +1,7 @@
 package examples.routeHandler.handlers;
 
+import jswf.components.generic.HttpResponse;
 import jswf.components.generic.RequestHandlerInterface;
-import jswf.components.http.routeHandlerComponent.Response;
 import jswf.framework.Environment;
 
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.io.IOException;
 public class IndexHandler implements RequestHandlerInterface {
 
     public void handle(Environment environment) {
-        Response response = (Response) environment.getResponse();
+        HttpResponse response = (HttpResponse) environment.getResponse();
 
         try {
             response.addContent("Hello World!");

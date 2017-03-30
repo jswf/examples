@@ -1,9 +1,9 @@
 package examples.routeHandler.handlers;
 
+import jswf.components.generic.HttpRequest;
+import jswf.components.generic.HttpResponse;
+import jswf.components.generic.HttpRoute;
 import jswf.components.generic.RequestHandlerInterface;
-import jswf.components.http.routeHandlerComponent.Request;
-import jswf.components.http.routeHandlerComponent.Response;
-import jswf.components.http.routeHandlerComponent.Route;
 import jswf.framework.Environment;
 
 import java.io.IOException;
@@ -11,9 +11,9 @@ import java.io.IOException;
 public class BooksByAuthorHandler implements RequestHandlerInterface {
 
     public void handle(Environment environment) {
-        Request request = (Request) environment.getRequest();
-        Response response = (Response) environment.getResponse();
-        Route route = (Route) request.getRoute();
+        HttpRequest request = (HttpRequest) environment.getRequest();
+        HttpResponse response = (HttpResponse) environment.getResponse();
+        HttpRoute route = (HttpRoute) request.getRoute();
 
         try {
             response.addContent("Author: " + route.getUriParameter("author") + ", Category: " + route.getUriParameter("category") + ", Book: " + route.getUriParameter("title") );
