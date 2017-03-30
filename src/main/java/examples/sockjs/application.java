@@ -1,5 +1,6 @@
 package examples.sockjs;
 
+import examples.sockjs.components.SockJsComponent;
 import jswf.components.http.LogRequestComponent;
 import jswf.components.http.NoRouteMatchedComponent;
 import jswf.components.http.StaticFilesServerComponent;
@@ -14,18 +15,21 @@ public class application {
         StaticFilesServerComponent staticFilesServerComponent = new StaticFilesServerComponent();
         staticFilesServerComponent
                 .setBasePath(System.getProperty("user.dir"))
-                .addPath("/src/main/java/examples/sockjs/public/html", "/{((.*)(.html)$)}")
+                .addPath("/src/main/java/examples/sockjs/public/html", "/{(.*)(.html)$}")
                 .addPath("/src/main/java/examples/sockjs/public", "/css/{(.*)*}")
                 .addPath("/src/main/java/examples/sockjs/public", "/js/{(.*)*}")
                 .addPath("/src/main/java/examples/sockjs/public", "/fonts/{(.*)*}")
         ;
 
+        SockJsComponent sockJsComponent = new SockJsComponent();
+
         Framework framework = new Framework();
         framework
                 .setRunner(runner)
-                .addComponent(staticFilesServerComponent)
-                .addComponent(new NoRouteMatchedComponent())
                 .addComponent(new LogRequestComponent())
+                .addComponent(staticFilesServerComponent)
+                .addComponent(sockJsComponent)
+                .addComponent(new NoRouteMatchedComponent())
         ;
 
         try {
