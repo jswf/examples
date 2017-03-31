@@ -40,7 +40,7 @@
         <mockito.version>1.10.19</mockito.version>
         <slf4j.version>1.7.13</slf4j.version>
         <commons-codec.version>1.10</commons-codec.version>
-        <jswf.components.version>f4c5d14c885b74c3dc44663b2923c1fb363fc092</jswf.components.version>
+        <jswf.components.version>d9cd9e81a3c1b48fe418d785f2f079ec34d5a0dd</jswf.components.version>
     </properties>
 
     <repositories>
@@ -85,6 +85,12 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.0</version>
         </dependency>
     </dependencies>
 
